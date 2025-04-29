@@ -1,4 +1,4 @@
-const { Cell } = require("../app");
+const { Cell } = require("../Cell.js");
 
 describe("Cell", () => {
   let cell;
