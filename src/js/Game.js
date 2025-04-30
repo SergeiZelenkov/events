@@ -27,6 +27,13 @@ export class Game {
           this.ui.updateGoblinMissed(this.missed);
           this.wasClicked = true;
         }
+        if (this.missed === this.maximumMisses) {
+          this.ui.updateGoblinMissed(this.missed);
+          setTimeout(() => {
+            alert("Verloren!");
+            this.reset();
+          }, 0);
+        }
       });
     }
 
@@ -48,9 +55,12 @@ export class Game {
       this.cells[newIndex].activate();
       this.activeIndex = newIndex;
       this.wasClicked = false;
-      if (this.missed >= this.score + this.maximumMisses) {
-        alert("Verloren!");
-        this.reset();
+      if (this.missed === this.maximumMisses) {
+        this.ui.updateGoblinMissed(this.missed);
+        setTimeout(() => {
+          alert("Verloren!");
+          this.reset();
+        }, 0);
       }
     }, 1000);
   }
